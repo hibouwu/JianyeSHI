@@ -1,0 +1,22 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches:
+      - main  # 确保这里是你的默认分支
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+      - run: gem install bundler
+      - run: bundle install
+      - run: bundle exec jekyll build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: _site/

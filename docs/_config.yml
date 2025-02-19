@@ -3,4 +3,5 @@ description: "This is a personal blog based on Jekyll."
 author:
   name: "JianyeSHI"
   email: "you@example.com"
-theme: minimal
+remote_theme: mmistakes/minimal-mistakes
+

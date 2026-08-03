@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="石健晔的 CUDA、GPU 微架构与 AI Infra 技术主页，记录 Blackwell Tensor Core、PTX/SASS、Shared Memory 与低精度 GEMM 研究。">
+    <meta name="description" content="石健晔的个人技术主页 · CUDA / GPU 微架构 / AI Infra · Blackwell Tensor Core, PTX/SASS, Shared Memory, 低精度 GEMM">
   <meta name="theme-color" content="#07111f">
   <title>石健晔 · CUDA / AI Infra</title>
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -37,8 +37,8 @@
           <p class="eyebrow"><span class="status-dot"></span> CUDA · AI Infrastructure · HPC</p>
           <h1>从 GPU 指令到<br><span>真实计算路径</span></h1>
           <p class="hero-lead">
-            我是石健晔，巴黎萨克雷大学高性能计算硕士在读。近期专注 NVIDIA Blackwell / Thor，
-            研究 Tensor Core、数据搬运、存储层级和编译器 lowering，并把实验整理成可复现的代码与技术文档。
+            我是石健晔，在巴黎萨克雷大学读高性能计算硕士。最近在折腾 Blackwell / Thor 的
+            Tensor Core、数据搬运、存储层级和编译器 lowering，实验和笔记都在 GitHub 上。
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#writing">阅读技术文档</a>
@@ -53,7 +53,7 @@
 
         <aside class="hero-panel" aria-label="近期研究概览">
           <div class="portrait-wrap">
-            <img src="res/photo%20jianye.jpg" alt="石健晔的个人照片" width="1533" height="2153">
+            <img src="res/profile.png" alt="石健晔的个人照片" width="758" height="1011">
             <span class="portrait-label">Jianye Shi</span>
           </div>
           <div class="terminal-card" aria-label="研究状态">
@@ -84,7 +84,7 @@ minimal case → benchmark
           <p class="eyebrow">Recent research</p>
           <h2>最近研究的主题</h2>
         </div>
-        <p>围绕一个核心问题展开：高层算子最终如何映射到 GPU 的指令、存储和流水线上？</p>
+        <p>代码怎么写，最终到硬件上就是什么——把这个链条搞清楚。</p>
       </div>
 
       <div class="research-grid">
@@ -92,7 +92,7 @@ minimal case → benchmark
           <div class="card-index">01</div>
           <p class="card-kicker">Tensor Core / Data Movement</p>
           <h3>Blackwell TCGen05 与异步流水</h3>
-          <p>研究 TCGen05 MMA、TMA、TMEM、mbarrier、warp specialization 与 CLC persistent scheduling，拆分 compute-only、copy-only 和真实 mainloop 的性能边界。</p>
+          <p>拆 TCGen05 的 MMA、TMA、TMEM、mbarrier 和 warp specialization，分别测 compute-only、copy-only 和真实主循环，看异步流水到底能跑多快。</p>
           <ul class="tag-list"><li>SM100</li><li>SM110</li><li>TMA</li><li>TMEM</li><li>NCU</li></ul>
         </article>
 
@@ -100,7 +100,7 @@ minimal case → benchmark
           <div class="card-index">02</div>
           <p class="card-kicker">Compiler Lowering</p>
           <h3>PTX → SASS 可审计映射</h3>
-          <p>用最小 PTX kernel、O0/O3 配对编译和双路反汇编，把核心 opcode、操作数布置与编译器发射协议分层归因。</p>
+          <p>用最小的 PTX kernel，O0 vs O3 对照编译，两边反汇编，看同一个 opcode 到底变成了什么 SASS 指令。</p>
           <ul class="tag-list"><li>PTX ISA</li><li>ptxas</li><li>nvdisasm</li></ul>
         </article>
 
@@ -108,7 +108,7 @@ minimal case → benchmark
           <div class="card-index">03</div>
           <p class="card-kicker">Memory Hierarchy</p>
           <h3>Shared Memory 与 Swizzle</h3>
-          <p>从地址到 bank 的映射出发，研究 LDS/STS、cp.async、TMA 与 descriptor-driven operand path，区分冲突、广播和 profiler 可观测边界。</p>
+          <p>从地址到 bank 的映射，拆 LDS/STS、cp.async、TMA 的 operand path，弄清楚什么时候是真的 bank conflict。</p>
           <ul class="tag-list"><li>Bank conflict</li><li>Swizzle</li><li>Wavefront</li></ul>
         </article>
 
@@ -116,7 +116,7 @@ minimal case → benchmark
           <div class="card-index">04</div>
           <p class="card-kicker">Low Precision</p>
           <h3>NVFP4 量化 GEMM</h3>
-          <p>关注 E2M1 payload、E4M3 block scaling、packed layout、requantization epilogue，以及低精度格式对 GEMM 数据流和吞吐的影响。</p>
+          <p>NVFP4 的 E2M1 payload + E4M3 block scaling，看 quant/dequant 走哪条路径，低精度格式对 GEMM 数据流的影响。</p>
           <ul class="tag-list"><li>NVFP4</li><li>FP8</li><li>CUTLASS</li><li>CuTe</li></ul>
         </article>
       </div>
@@ -126,9 +126,9 @@ minimal case → benchmark
       <div class="section-heading">
         <div>
           <p class="eyebrow">Technical writing</p>
-          <h2>我能输出的技术文档</h2>
+          <h2>写过的技术笔记</h2>
         </div>
-        <p>不是摘录 API，而是从问题定义、实验设计、原始证据到结论边界的完整技术记录。</p>
+        <p>不抄文档，每个笔记都带了实验设计、原始数据和结论的限制条件。</p>
       </div>
 
       <div class="document-list">
@@ -176,19 +176,19 @@ minimal case → benchmark
         <a class="project-card" href="https://github.com/hibouwu/CUDA_optimazation" target="_blank" rel="noreferrer">
           <span class="repo-icon" aria-hidden="true">⌁</span>
           <h3>CUDA_optimazation</h3>
-          <p>版本化 CUDA kernel、Blackwell/Thor GEMM、microbenchmark、Shared Memory 与低精度量化实验平台。</p>
+          <p>CUDA kernel 实验仓库，Blackwell/Thor GEMM、microbenchmark、Shared Memory、低精度量化。</p>
           <span class="project-link">打开仓库 ↗</span>
         </a>
         <a class="project-card" href="https://github.com/hibouwu/PTX_To_SASS" target="_blank" rel="noreferrer">
           <span class="repo-icon" aria-hidden="true">⌁</span>
           <h3>PTX_To_SASS</h3>
-          <p>面向 B200 的 PTX 指令生成、编译、反汇编、语义验证和映射审计工具链。</p>
+          <p>B200 的 PTX 生成、编译、反汇编和指令映射验证脚本。</p>
           <span class="project-link">打开仓库 ↗</span>
         </a>
         <a class="project-card" href="https://github.com/hibouwu/ppn-mnist-neural-network" target="_blank" rel="noreferrer">
           <span class="repo-icon" aria-hidden="true">⌁</span>
           <h3>ppn-mnist-neural-network</h3>
-          <p>C++ 自动微分与训练 runtime，包含 GEMM 后端、CNN、MPI 数据并行和实验基础设施。</p>
+          <p>C++ 从零写的自动微分和训练 runtime，带 GEMM 后端、CNN、MPI 数据并行。</p>
           <span class="project-link">打开仓库 ↗</span>
         </a>
       </div>
@@ -198,11 +198,11 @@ minimal case → benchmark
       <div class="about-grid">
         <div>
           <p class="eyebrow">About</p>
-          <h2>以证据驱动性能工程</h2>
+          <h2>我是怎么干活的</h2>
         </div>
         <div class="about-copy">
-          <p>我的工作习惯是先定义可证伪的问题，再构造最小对照实验。性能数字必须同时回答：测量对象是什么、计时边界在哪里、指令是否真的生成、结果是否正确，以及结论不能外推到哪里。</p>
-          <p>目前希望继续深入 GPU 算子、AI Infra、异构计算和训练/推理系统，把微架构理解连接到真实模型的端到端性能。</p>
+          <p>拿到一个性能数字，我会追问：测的到底是什么、计时边界在哪、指令真的生成没有、结果对吗。不喜欢模糊的结论，所以每个实验尽量写到最小化、能复现。</p>
+          <p>目前在深入 GPU 算子、AI Infra 和训练/推理系统，想把微架构的理解串到端到端的模型性能上。</p>
           <div class="contact-links">
             <a href="mailto:shijianye201908@163.com">Email</a>
             <a href="https://github.com/hibouwu" target="_blank" rel="noreferrer">GitHub</a>
@@ -214,7 +214,7 @@ minimal case → benchmark
 
   <footer class="site-footer">
     <p>© 2026 Jianye Shi</p>
-    <p>Built as a compact record of experiments, code and technical writing.</p>
+    <p>写代码、做实验、记笔记。</p>
   </footer>
 </body>
 </html>

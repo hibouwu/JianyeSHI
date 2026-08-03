@@ -1,62 +1,218 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site Personnel</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .container {
-            display: flex;
-            width: 100%;
-        }
-        .left {
-            width: 25%;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .left img {
-            max-width: 100%;
-            height: auto;
-            max-height: 200px;
-            border-radius: 10px;
-        }
-        .right {
-            width: 75%;
-            padding: 20px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="石健晔的 CUDA、GPU 微架构与 AI Infra 技术主页，记录 Blackwell Tensor Core、PTX/SASS、Shared Memory 与低精度 GEMM 研究。">
+  <meta name="theme-color" content="#07111f">
+  <title>石健晔 · CUDA / AI Infra</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Bienvenue sur mon site personnel</h1>
-    </header>
-    
-    <div class="container">
-        <section class="left">
-            <h2>À propos de moi</h2>
-            <img src="res/photo jianye.jpg" alt="Ma photo">
-            <p>Je suis un étudiant en 3ème année de Double Diplôme en licence Mathématiques et informatique à l'université de Paris Cité.</p>
+  <a class="skip-link" href="#main">跳到主要内容</a>
 
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </section>
-        <section class="right">
-            <h2>Liens utiles</h2>
-            <ul>
-                <li><a href="https://github.com/hibouwu/">GitHub</a></li>
-                <li><a href="Projet Réalisé.html">Mes Projet Réalisé</a></li>
-                <li><a href="Resumés de coure.html">Mes Résumés de Cours</a></li>
-            </ul>
-        </section>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">JS</span>
+        <span>Jianye Shi</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#research">研究主题</a>
+        <a href="#writing">技术文档</a>
+        <a href="#projects">项目</a>
+        <a href="#about">关于</a>
+      </nav>
+      <a class="nav-github" href="https://github.com/hibouwu" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Jianye. Tous droits réservés.</p>
-    </footer>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> CUDA · AI Infrastructure · HPC</p>
+          <h1>从 GPU 指令到<br><span>真实计算路径</span></h1>
+          <p class="hero-lead">
+            我是石健晔，巴黎萨克雷大学高性能计算硕士在读。近期专注 NVIDIA Blackwell / Thor，
+            研究 Tensor Core、数据搬运、存储层级和编译器 lowering，并把实验整理成可复现的代码与技术文档。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#writing">阅读技术文档</a>
+            <a class="button button-secondary" href="https://github.com/hibouwu" target="_blank" rel="noreferrer">查看代码仓库</a>
+          </div>
+          <ul class="hero-meta" aria-label="个人信息">
+            <li>Paris-Saclay · HPC</li>
+            <li>Blackwell SM100 / SM110</li>
+            <li>C++ / CUDA / PTX / SASS</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel" aria-label="近期研究概览">
+          <div class="portrait-wrap">
+            <img src="res/photo%20jianye.jpg" alt="石健晔的个人照片" width="1533" height="2153">
+            <span class="portrait-label">Jianye Shi</span>
+          </div>
+          <div class="terminal-card" aria-label="研究状态">
+            <div class="terminal-bar"><span></span><span></span><span></span></div>
+            <pre><code><span class="prompt">$</span> current_focus
+tcgen05 · tma · tmem
+ptx → sass lowering
+nvfp4 quantized gemm
+
+<span class="prompt">$</span> method
+minimal case → benchmark
+→ profiler → disassembly</code></pre>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="研究数据概览">
+      <div class="metric"><strong>206</strong><span>PTX 最小验证用例</span></div>
+      <div class="metric"><strong>126</strong><span>TCGen05 测试组合</span></div>
+      <div class="metric"><strong>99.8%</strong><span>Tensor Core 峰值利用率</span></div>
+      <div class="metric"><strong>947</strong><span>L2 read B/cycle sustained</span></div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Recent research</p>
+          <h2>最近研究的主题</h2>
+        </div>
+        <p>围绕一个核心问题展开：高层算子最终如何映射到 GPU 的指令、存储和流水线上？</p>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-card featured">
+          <div class="card-index">01</div>
+          <p class="card-kicker">Tensor Core / Data Movement</p>
+          <h3>Blackwell TCGen05 与异步流水</h3>
+          <p>研究 TCGen05 MMA、TMA、TMEM、mbarrier、warp specialization 与 CLC persistent scheduling，拆分 compute-only、copy-only 和真实 mainloop 的性能边界。</p>
+          <ul class="tag-list"><li>SM100</li><li>SM110</li><li>TMA</li><li>TMEM</li><li>NCU</li></ul>
+        </article>
+
+        <article class="research-card">
+          <div class="card-index">02</div>
+          <p class="card-kicker">Compiler Lowering</p>
+          <h3>PTX → SASS 可审计映射</h3>
+          <p>用最小 PTX kernel、O0/O3 配对编译和双路反汇编，把核心 opcode、操作数布置与编译器发射协议分层归因。</p>
+          <ul class="tag-list"><li>PTX ISA</li><li>ptxas</li><li>nvdisasm</li></ul>
+        </article>
+
+        <article class="research-card">
+          <div class="card-index">03</div>
+          <p class="card-kicker">Memory Hierarchy</p>
+          <h3>Shared Memory 与 Swizzle</h3>
+          <p>从地址到 bank 的映射出发，研究 LDS/STS、cp.async、TMA 与 descriptor-driven operand path，区分冲突、广播和 profiler 可观测边界。</p>
+          <ul class="tag-list"><li>Bank conflict</li><li>Swizzle</li><li>Wavefront</li></ul>
+        </article>
+
+        <article class="research-card">
+          <div class="card-index">04</div>
+          <p class="card-kicker">Low Precision</p>
+          <h3>NVFP4 量化 GEMM</h3>
+          <p>关注 E2M1 payload、E4M3 block scaling、packed layout、requantization epilogue，以及低精度格式对 GEMM 数据流和吞吐的影响。</p>
+          <ul class="tag-list"><li>NVFP4</li><li>FP8</li><li>CUTLASS</li><li>CuTe</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section writing-section" id="writing">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Technical writing</p>
+          <h2>我能输出的技术文档</h2>
+        </div>
+        <p>不是摘录 API，而是从问题定义、实验设计、原始证据到结论边界的完整技术记录。</p>
+      </div>
+
+      <div class="document-list">
+        <a class="document-row" href="https://github.com/hibouwu/PTX_To_SASS/blob/main/README.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">RESEARCH</span>
+          <span class="doc-main"><strong>PTX To SASS：B200 指令映射验证</strong><small>206 个 PTX 用例 · O0/O3 · artifact manifest</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="document-row" href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cute_layout/cutlass_gemm_dataflow_tile_partition_thread_partition_storage_mapping/README.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">DATAFLOW</span>
+          <span class="doc-main"><strong>Blackwell tcgen05 GEMM 数据流：同一矩阵的不同表达</strong><small>GMEM tile → SMEM stage → TMEM accumulator → epilogue</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="document-row" href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cutlassNVFP4GEMM.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">GEMM</span>
+          <span class="doc-main"><strong>CUTLASS NVFP4 GEMM 技术解析</strong><small>Persistent kernel · CLC · warp pipeline · requant epilogue</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="document-row" href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/sm110_gemm_bank_conflict_research.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">MEMORY</span>
+          <span class="doc-main"><strong>Thor / SM110 GEMM Shared Memory 研究</strong><small>Bank model · descriptor · layout · profiler boundary</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="document-row" href="https://github.com/hibouwu/CUDA_optimazation/blob/main/SmemReserch/bank_conflict/tma/README.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">BENCHMARK</span>
+          <span class="doc-main"><strong>TMA Copy 与 Shared Memory Consumer/Producer</strong><small>Swizzle 对照 · conflict counter · correctness · CSV</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="document-row" href="https://github.com/hibouwu/CUDA_optimazation/blob/main/microbench/L2throughtput/README.md" target="_blank" rel="noreferrer">
+          <span class="doc-type">MICROBENCH</span>
+          <span class="doc-main"><strong>Thor L2 吞吐微基准</strong><small>Measured sustained 与 model peak 的口径分离</small></span>
+          <span class="doc-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading compact-heading">
+        <div>
+          <p class="eyebrow">Selected repositories</p>
+          <h2>代码与实验平台</h2>
+        </div>
+      </div>
+      <div class="project-grid">
+        <a class="project-card" href="https://github.com/hibouwu/CUDA_optimazation" target="_blank" rel="noreferrer">
+          <span class="repo-icon" aria-hidden="true">⌁</span>
+          <h3>CUDA_optimazation</h3>
+          <p>版本化 CUDA kernel、Blackwell/Thor GEMM、microbenchmark、Shared Memory 与低精度量化实验平台。</p>
+          <span class="project-link">打开仓库 ↗</span>
+        </a>
+        <a class="project-card" href="https://github.com/hibouwu/PTX_To_SASS" target="_blank" rel="noreferrer">
+          <span class="repo-icon" aria-hidden="true">⌁</span>
+          <h3>PTX_To_SASS</h3>
+          <p>面向 B200 的 PTX 指令生成、编译、反汇编、语义验证和映射审计工具链。</p>
+          <span class="project-link">打开仓库 ↗</span>
+        </a>
+        <a class="project-card" href="https://github.com/hibouwu/ppn-mnist-neural-network" target="_blank" rel="noreferrer">
+          <span class="repo-icon" aria-hidden="true">⌁</span>
+          <h3>ppn-mnist-neural-network</h3>
+          <p>C++ 自动微分与训练 runtime，包含 GEMM 后端、CNN、MPI 数据并行和实验基础设施。</p>
+          <span class="project-link">打开仓库 ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>以证据驱动性能工程</h2>
+        </div>
+        <div class="about-copy">
+          <p>我的工作习惯是先定义可证伪的问题，再构造最小对照实验。性能数字必须同时回答：测量对象是什么、计时边界在哪里、指令是否真的生成、结果是否正确，以及结论不能外推到哪里。</p>
+          <p>目前希望继续深入 GPU 算子、AI Infra、异构计算和训练/推理系统，把微架构理解连接到真实模型的端到端性能。</p>
+          <div class="contact-links">
+            <a href="mailto:shijianye201908@163.com">Email</a>
+            <a href="https://github.com/hibouwu" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Jianye Shi</p>
+    <p>Built as a compact record of experiments, code and technical writing.</p>
+  </footer>
 </body>
 </html>

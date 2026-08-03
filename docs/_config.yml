@@ -1,7 +1,8 @@
-title: "JianyeSHI"
-description: "This is a personal blog based on Jekyll."
+title: "Jianye Shi · CUDA / AI Infra"
+description: "CUDA, GPU microarchitecture and AI Infrastructure research notes by Jianye Shi."
+url: "https://hibouwu.github.io"
+baseurl: "/JianyeSHI"
 author:
-  name: "JianyeSHI"
-  email: "you@example.com"
+  name: "Jianye Shi"
+  email: "shijianye201908@163.com"
 remote_theme: mmistakes/minimal-mistakes
-

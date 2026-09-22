@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jianye Shi, a master's student in high-performance computing at Université Paris-Saclay. GPU kernels, CUDA performance, PTX compiler frontends and instruction validation.">
+  <meta name="theme-color" content="#061e2c">
+  <title>Jianye Shi · Personal Website</title>
+  <link rel="icon" href="favicon.ico?v=20260812" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png?v=20260812" sizes="512x512">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260812">
+  <link rel="stylesheet" href="minimal.css?v=20260922-bilingual">
+  <link rel="alternate" hreflang="zh-CN" href="index.html">
+  <link rel="alternate" hreflang="en" href="en.html">
+  <link rel="alternate" hreflang="x-default" href="index.html">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <span>Jianye Shi · Personal website</span>
+      <div class="utility-actions">
+        <a class="utility-contact" href="mailto:shijianye201908@163.com">Contact</a>
+        <nav class="language-switch" aria-label="Language">
+          <a href="index.html" lang="zh-CN" hreflang="zh-CN">中文</a>
+          <span aria-hidden="true">/</span>
+          <a href="en.html" lang="en" hreflang="en" aria-current="page">English</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-identity" href="#top" aria-label="Jianye Shi · Back to top">
+        <img src="favicon.png?v=20260812" alt="" width="38" height="38">
+        <span>Jianye Shi <small lang="zh-CN">石健晔</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">Profile</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#top">Home</a><span aria-hidden="true">›</span><span aria-current="page">Profile</span>
+    </nav>
+
+    <section class="profile" id="about" aria-labelledby="profile-name">
+      <figure class="profile-photo">
+        <img src="res/profile.png?v=20260803" alt="Portrait of Jianye Shi" width="758" height="1011">
+        <figcaption>Jianye Shi</figcaption>
+      </figure>
+      <div class="profile-info">
+        <p class="profile-label">High-performance computing · Master's student</p>
+        <h1 id="profile-name">Jianye Shi <span lang="zh-CN">石健晔</span></h1>
+        <p class="profile-role">GPU kernel development &amp; performance optimization</p>
+        <p class="profile-affiliation">Université Paris-Saclay<br><span>Master's student in high-performance computing</span></p>
+        <p class="profile-detail">CUDA, GPU microarchitecture and compiler frontends</p>
+      </div>
+      <div class="profile-links" aria-label="Contact and resources">
+        <a href="https://github.com/hibouwu" target="_blank" rel="noreferrer">
+          <span class="link-icon" aria-hidden="true">↗</span><span>GitHub · Code &amp; experiments</span>
+        </a>
+        <a href="#projects">
+          <span class="link-icon" aria-hidden="true">⌘</span><span>Research &amp; projects</span>
+        </a>
+        <a href="mailto:shijianye201908@163.com">
+          <span class="link-icon" aria-hidden="true">@</span><span>Email</span>
+        </a>
+        <a href="#writing">
+          <span class="link-icon" aria-hidden="true">≡</span><span>Technical writing</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="profile-content">
+      <section class="content-section" id="research" aria-labelledby="research-title">
+        <h2 id="research-title">Research interests</h2>
+        <p>I study high-performance computing at Université Paris-Saclay, with a focus on GPU kernel development, CUDA performance optimization and compiler frontends. My recent work explores NVIDIA Blackwell / Thor: Tensor Core computation, asynchronous data movement, shared-memory layouts, low-precision GEMM, PTX semantics and generated instructions.</p>
+        <p>I aim to turn observations from microarchitecture experiments into kernel implementations, using reference outputs, performance measurements and disassembly to explain where an optimization helps and where it does not.</p>
+      </section>
+
+      <section class="content-section" id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">Experience</h2>
+        <h3>XPeng · AI Operator Library Development Intern</h3>
+        <p class="entry-meta">Summer internship · Started June 2026 · Algorithm team</p>
+        <p>In the algorithm team, I contributed to research on operator frameworks and GPU instruction behavior. I worked on PTX parsing, instruction semantics checks and a frontend path to typed LLVM/NVVM IR, checking the output for supported forms with the LLVM verifier and independently compiled artifacts.</p>
+        <ul>
+          <li>Built workflows to capture, check and archive NVIDIA instruction reference results, providing traceable inputs and outputs for the team's numerical comparisons.</li>
+          <li>Organized fixed seeds, case IDs and resumable regression runs around existing Tensor Core programs, recording environments, inputs and results.</li>
+          <li>Studied TMA, TMEM, TCGen05 and the memory hierarchy through microbenchmarks, using NCU and SASS to analyze computation, data movement and synchronization costs.</li>
+        </ul>
+      </section>
+
+      <section class="content-section" id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Research &amp; projects</h2>
+
+        <article class="project-entry">
+          <h3>Blackwell / Thor CUDA kernel optimization</h3>
+          <p class="entry-meta">CUDA · Tensor Core · TMA / TMEM · Low-precision GEMM</p>
+          <p>Implemented FP16 × FP16 → FP32 GEMM on Thor using raw CUDA and inline PTX, exploring TMA data movement, TCGen05/TMEM, warp specialization and persistent scheduling. Also implemented NVFP4 E2M1 data, E4M3 block scaling and a requantization epilogue.</p>
+          <p>In <strong>10 archived tc5b trials at 1024³</strong>, all results passed the reference comparison, with average performance reaching <strong>92.7%</strong> of the cuBLAS Tensor Core reference (<code>cublasGemmEx</code>). This result is specific to that problem size and historical reference implementation, not all sizes or end-to-end model performance.</p>
+          <p class="resource-link"><a href="https://github.com/hibouwu/CUDA_optimazation" target="_blank" rel="noreferrer">Code and experiment records <span aria-hidden="true">↗</span></a></p>
+        </article>
+
+        <article class="project-entry">
+          <h3>PTX semantics, typed IR and PTX → SASS validation</h3>
+          <p class="entry-meta">PTX · LLVM / NVVM · ptxas · nvdisasm</p>
+          <p>Separated PTX parsing, type and instruction semantics checks, and typed LLVM/NVVM IR emission into distinct layers, preserving address spaces and instruction modifiers. Frontend output is validated separately from the collaborating backend.</p>
+          <p>Archived <strong>206 minimal static PTX test cases</strong> for B200: 205 valid inputs and one specification-based negative case. Compared O0/O3 compilation results and disassembly from two tools, retaining environment information and SHA-256 hashes to analyze core opcodes, operand layout and instruction emission protocols.</p>
+          <p class="evidence-note">Static lowering shows what the compiler generates; it does not, on its own, establish a kernel's numerical correctness. Hardware execution, numerical comparisons and performance measurements are recorded separately.</p>
+          <p class="resource-link"><a href="https://github.com/hibouwu/PTX_To_SASS" target="_blank" rel="noreferrer">Code and validation notes <span aria-hidden="true">↗</span></a></p>
+        </article>
+
+        <article class="project-entry">
+          <h3>C++ training runtime and parallel computing</h3>
+          <p class="entry-meta">Oct 2025 – Apr 2026 · Team project · C++ / SIMD / MPI</p>
+          <p>Contributed to GEMM, Conv2D, data loading and parts of the MPI synchronization runtime. Implemented blocking/packing and SIMD micro-kernels, and used gprof to locate matrix-multiplication bottlenecks.</p>
+          <p>Switching to BLAS reduced the time for one MNIST epoch from <strong>13.27 s to 1.74 s</strong>. This improvement came from the BLAS switch, not the custom SIMD kernels. My MPI work included parameter registration, gradient bucketing and synchronization statistics.</p>
+          <p class="resource-link"><a href="https://github.com/hibouwu/ppn-mnist-neural-network" target="_blank" rel="noreferrer">Team project <span aria-hidden="true">↗</span></a></p>
+        </article>
+      </section>
+
+      <section class="content-section" id="writing" aria-labelledby="writing-title">
+        <h2 id="writing-title">Technical writing</h2>
+        <p>Notes on dataflow, instruction semantics and performance experiments. Links lead to the original repository documents, which may be in Chinese.</p>
+        <ul class="writing-list">
+          <li><a href="https://github.com/hibouwu/PTX_To_SASS/blob/main/README.md" target="_blank" rel="noreferrer">PTX To SASS: B200 instruction mapping</a><span>Minimal cases, O0/O3 comparisons and archived compilation artifacts.</span></li>
+          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cute_layout/cutlass_gemm_dataflow_tile_partition_thread_partition_storage_mapping/README.md" target="_blank" rel="noreferrer">Blackwell tcgen05 GEMM dataflow</a><span>GMEM tile → SMEM stage → TMEM accumulator → epilogue.</span></li>
+          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cutlassNVFP4GEMM.md" target="_blank" rel="noreferrer">Understanding CUTLASS NVFP4 GEMM</a><span>Persistent kernels, warp pipelines and requantization epilogues.</span></li>
+          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/sm110_gemm_bank_conflict_research.md" target="_blank" rel="noreferrer">Shared-memory studies for Thor / SM110 GEMM</a><span>Bank mapping, descriptors, layouts and the limits of profiler metrics.</span></li>
+        </ul>
+      </section>
+
+      <section class="content-section" id="education" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <ul class="education-list">
+          <li><strong>Université Paris-Saclay</strong> · Master's student in high-performance computing<span>Sep 2025 – Expected Sep 2027</span></li>
+          <li><strong>Université Paris Cité</strong> · Bachelor's degree in Computer Science and Applications<span>Sep 2021 – Jun 2025</span></li>
+        </ul>
+      </section>
+
+      <section class="content-section" id="approach" aria-labelledby="approach-title">
+        <h2 id="approach-title">How I work</h2>
+        <p>For any performance number, I first check the inputs, timing scope, reference implementation and hardware path. I then use minimal controlled experiments, profiling and disassembly to investigate the cause. I keep evidence for performance, static code generation and numerical correctness separate, and retain experimental conditions and failed approaches.</p>
+      </section>
+    </div>
+    <p class="back-to-top"><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Jianye Shi</p>
+      <a href="mailto:shijianye201908@163.com">shijianye201908@163.com</a>
+      <a href="https://github.com/hibouwu" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </footer>
+</body>
+</html>

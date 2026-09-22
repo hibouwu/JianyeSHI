@@ -21,7 +21,25 @@ Chinese is served from `docs/index.html`; the full English profile is
 The header language links and alternate-language metadata use relative URLs so
 they work both locally and under the GitHub Pages `/JianyeSHI/` base path.
 Keep facts, metrics and responsibility boundaries synchronized when editing
-either language. Linked repository documents retain their original language.
+either language.
+
+After reviewing the documentation selection, the user requested that all of
+these document entries be removed from the website. The documentation section,
+navigation and profile shortcuts are now absent in both languages and contact
+pages. Do not restore them without a new request. Project descriptions and
+repository links remain; no source documents in the research repositories were
+deleted. The [authorship audit](AUTHORSHIP_AUDIT.md) is a historical record, not
+a current publication list. Repository ownership or a commit alone is not proof
+of original authorship.
+
+Contact pages are `docs/contact.html` and `docs/contact-en.html`. Navigation and
+profile contact links open these pages; the footer keeps a direct email link.
+Both use `shijianye201908@163.com`. The send button is a `mailto:` link, not a
+server-side form. `docs/contact.js` enables copying the address and selects it
+for manual copying if clipboard access fails. Email links work without JavaScript.
+Run `node tests/contact.test.mjs` to check links, cross-page anchors and clipboard
+success/fallback behavior. Browser checks also cover both contact languages at
+320, 390, 768 and 1440px widths.
 
 ## Profile-page design
 
@@ -41,5 +59,5 @@ experiment was run for this redesign.
 
 Local browser checks cover 320, 390, 768 and 1440px viewports, image loading,
 internal anchors, fixed-header clearance, and keyboard navigation. External
-project/document links are preserved; their remote content was not re-audited.
+project links are preserved; their remote content was not re-audited.
 This revision is local only and has not been published.

@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.ico?v=20260812" sizes="any">
   <link rel="icon" type="image/png" href="favicon.png?v=20260812" sizes="512x512">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260812">
-  <link rel="stylesheet" href="minimal.css?v=20260922-contact">
+  <link rel="stylesheet" href="minimal.css?v=20260922-profile-only">
   <link rel="alternate" hreflang="zh-CN" href="index.html">
   <link rel="alternate" hreflang="en" href="en.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
@@ -40,7 +40,6 @@
         <a href="#about">Profile</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
         <a href="contact-en.html">Contact</a>
       </nav>
     </div>
@@ -72,9 +71,6 @@
         </a>
         <a href="contact-en.html">
           <span class="link-icon" aria-hidden="true">@</span><span>Contact</span>
-        </a>
-        <a href="#writing">
-          <span class="link-icon" aria-hidden="true">≡</span><span>Technical writing</span>
         </a>
       </div>
     </section>
@@ -127,28 +123,12 @@
         </article>
       </section>
 
-      <section class="content-section" id="writing" aria-labelledby="writing-title">
-        <h2 id="writing-title">Technical writing</h2>
-        <p>Notes on dataflow, instruction semantics and performance experiments. Links lead to the original repository documents, which may be in Chinese.</p>
-        <ul class="writing-list">
-          <li><a href="https://github.com/hibouwu/PTX_To_SASS/blob/main/README.md" target="_blank" rel="noreferrer">PTX To SASS: B200 instruction mapping</a><span>Minimal cases, O0/O3 comparisons and archived compilation artifacts.</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cute_layout/cutlass_gemm_dataflow_tile_partition_thread_partition_storage_mapping/README.md" target="_blank" rel="noreferrer">Blackwell tcgen05 GEMM dataflow</a><span>GMEM tile → SMEM stage → TMEM accumulator → epilogue.</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cutlassNVFP4GEMM.md" target="_blank" rel="noreferrer">Understanding CUTLASS NVFP4 GEMM</a><span>Persistent kernels, warp pipelines and requantization epilogues.</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/sm110_gemm_bank_conflict_research.md" target="_blank" rel="noreferrer">Shared-memory studies for Thor / SM110 GEMM</a><span>Bank mapping, descriptors, layouts and the limits of profiler metrics.</span></li>
-        </ul>
-      </section>
-
       <section class="content-section" id="education" aria-labelledby="education-title">
         <h2 id="education-title">Education</h2>
         <ul class="education-list">
           <li><strong>Université Paris-Saclay</strong> · Master's student in high-performance computing<span>Sep 2025 – Expected Sep 2027</span></li>
           <li><strong>Université Paris Cité</strong> · Bachelor's degree in Computer Science and Applications<span>Sep 2021 – Jun 2025</span></li>
         </ul>
-      </section>
-
-      <section class="content-section" id="approach" aria-labelledby="approach-title">
-        <h2 id="approach-title">How I work</h2>
-        <p>For any performance number, I first check the inputs, timing scope, reference implementation and hardware path. I then use minimal controlled experiments, profiling and disassembly to investigate the cause. I keep evidence for performance, static code generation and numerical correctness separate, and retain experimental conditions and failed approaches.</p>
       </section>
     </div>
     <p class="back-to-top"><a href="#top">Back to top <span aria-hidden="true">↑</span></a></p>

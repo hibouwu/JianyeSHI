@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.ico?v=20260812" sizes="any">
   <link rel="icon" type="image/png" href="favicon.png?v=20260812" sizes="512x512">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260812">
-  <link rel="stylesheet" href="minimal.css?v=20260922-contact">
+  <link rel="stylesheet" href="minimal.css?v=20260922-profile-only">
   <link rel="alternate" hreflang="zh-CN" href="index.html">
   <link rel="alternate" hreflang="en" href="en.html">
   <link rel="alternate" hreflang="x-default" href="index.html">
@@ -40,7 +40,6 @@
         <a href="#about">个人简介</a>
         <a href="#experience">实习经历</a>
         <a href="#projects">研究与项目</a>
-        <a href="#writing">技术文档</a>
         <a href="contact.html">联系我</a>
       </nav>
     </div>
@@ -72,9 +71,6 @@
         </a>
         <a href="contact.html">
           <span class="link-icon" aria-hidden="true">@</span><span>联系我</span>
-        </a>
-        <a href="#writing">
-          <span class="link-icon" aria-hidden="true">≡</span><span>技术文档</span>
         </a>
       </div>
     </section>
@@ -127,28 +123,12 @@
         </article>
       </section>
 
-      <section class="content-section" id="writing" aria-labelledby="writing-title">
-        <h2 id="writing-title">技术文档</h2>
-        <p>围绕数据流、指令语义和性能实验整理的技术笔记。</p>
-        <ul class="writing-list">
-          <li><a href="https://github.com/hibouwu/PTX_To_SASS/blob/main/README.md" target="_blank" rel="noreferrer">PTX To SASS：B200 指令映射验证</a><span>最小用例、O0/O3 对照与编译产物归档。</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cute_layout/cutlass_gemm_dataflow_tile_partition_thread_partition_storage_mapping/README.md" target="_blank" rel="noreferrer">Blackwell tcgen05 GEMM 数据流</a><span>GMEM tile → SMEM stage → TMEM accumulator → epilogue。</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/cutlassNVFP4GEMM.md" target="_blank" rel="noreferrer">CUTLASS NVFP4 GEMM 技术解析</a><span>常驻 kernel、warp 流水与 requantization epilogue。</span></li>
-          <li><a href="https://github.com/hibouwu/CUDA_optimazation/blob/main/Docs/cutlass/sm110_gemm_bank_conflict_research.md" target="_blank" rel="noreferrer">Thor / SM110 GEMM Shared Memory 研究</a><span>Bank 映射、descriptor、layout 与 profiler 指标边界。</span></li>
-        </ul>
-      </section>
-
       <section class="content-section" id="education" aria-labelledby="education-title">
         <h2 id="education-title">教育经历</h2>
         <ul class="education-list">
           <li><strong>巴黎萨克雷大学</strong> · 高性能计算硕士在读<span>2025.09 – 预计 2027.09</span></li>
           <li><strong>巴黎西岱大学</strong> · 计算机科学与应用本科<span>2021.09 – 2025.06</span></li>
         </ul>
-      </section>
-
-      <section class="content-section" id="approach" aria-labelledby="approach-title">
-        <h2 id="approach-title">工作方式</h2>
-        <p>面对一个性能数字，我会先确认输入、计时范围、参考实现和硬件路径，再用最小对照实验、profiler 与反汇编定位原因。性能、静态编译结构和数值正确性分别给出证据，并保留实验条件和失败路径。</p>
       </section>
     </div>
     <p class="back-to-top"><a href="#top">返回顶部 <span aria-hidden="true">↑</span></a></p>
